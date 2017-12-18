@@ -1,0 +1,114 @@
+/****************************************************************************************************************
+												CAR DETAILS PAGE
+****************************************************************************************************************/
+#details_container{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+	border-top: 0.2px solid #eee;
+	background-color: #fff;
+	@include breakpoint(min, $screen-sm) {
+    flex-direction: row;
+  }
+}
+
+.image-section {
+	display: flex;
+	justify-content: center;
+	border-right: 0.2px solid #eee;
+
+	@include breakpoint(min, $screen-sm) {
+    width: 65%;
+  }
+}
+
+.description-section {
+	text-align: center;
+	padding: 15px;
+
+	@include breakpoint(min, $screen-sm) {
+    flex: 37%;
+  }
+}
+
+
+
+.file-add {
+  position: relative;
+  overflow: hidden;
+	color: #fff;
+	flex: 1 45%;
+	margin-right: 1%;
+	border: 0.5px solid #aaa;
+}
+
+.file-upload {
+	flex: 1 45%;
+	padding: 0;
+	color: #fff;
+	height: auto;
+	margin-left: 1%;
+
+	@include breakpoint(min, $screen-sm) {
+    top: 5%;
+  }
+
+	@include breakpoint(min, $screen-md) {
+		top: 0;
+	}
+}
+
+.file-add input.file-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+
+#details_info_container{
+	height:auto;
+	background: #fff;
+	display: -webkit-flex;
+	display:flex;
+	-webkit-flex-direction:row;
+	flex-direction: row;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	text-align: left;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+
+	@include breakpoint(min, $screen-sm) {
+    justify-content: space-between;
+  }
+
+}
+
+#details_info_container ul{
+	list-style: none;
+	padding: 0;
+}
+
+#details_info {
+	display: flex;
+	flex-direction: row;
+	margin: 0;
+
+}
+
+#details_info_titles {
+	margin-right: 15px;
+}
+
+#details_info_description {
+}

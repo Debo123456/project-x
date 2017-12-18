@@ -1,0 +1,61 @@
+//Get media mixin
+
+/******************************************************
+                BANNER
+******************************************************/
+.banner {
+  background-size: cover;
+	background: linear-gradient(
+      rgba(1, 1, 1, 1),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('/img/banner/banner-min.jpg');
+	background-position: 0 30%;
+  background-size: cover;
+	width: 100%;
+  height: 100px;
+	padding: 5px;
+  @include breakpoint(min, $screen-xs) {
+  	height: 150px;
+  }
+  @include breakpoint(min, $screen-sm) {
+    height: 200px;
+  }
+  @include breakpoint(min, $screen-md) {
+    height: 250px;
+  }
+
+  .banner-title{
+  	position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    h1 {
+      margin: 0;
+      color: white;
+      font-size: 2.5rem;
+      white-space: nowrap;
+      @include breakpoint(min, $screen-xs-min) {
+        font-size: 3rem;
+      }
+      @include breakpoint(min, $screen-sm-min) {
+        font-size: 3.7rem;
+      }
+
+    }
+    h2 {
+      color: white;
+    }
+    p {
+      margin: 0;
+      color: white;
+      font-size: 1.4rem;
+      @include breakpoint(min, $screen-sm-min) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+}

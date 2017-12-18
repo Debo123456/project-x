@@ -1,0 +1,92 @@
+/******************************************************
+                   GENERAL STYLES
+******************************************************/
+
+body{
+	 margin: 0;
+	 padding: 0;
+	 background: #fff;
+	 color: #333;
+}
+
+a {
+	color: #333;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body, select, input, p, span, a {
+	margin: 0;
+}
+
+
+.wrapper{
+	display: flex;
+  flex-direction: column;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	min-height: 100vh;  //This should be deleted once we start generating data from database
+	position:relative;
+	flex: 1 0 auto;
+}
+
+.wrapper:last-child{
+	margin-top:auto;
+}
+
+.content {
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	@include breakpoint(min, $screen-sm) {
+  	flex-direction: row;
+  }
+}
+
+
+.form_container{
+	width: 100%;
+	display: flex;
+	padding: 10px;
+	min-height: 80vh;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.form{
+	padding: 10px 10px;
+	border: 1px solid #aaa;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.form-control {
+	border: 1px solid #aaa;
+}
+
+.hidden{
+	display:none;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.price {
+	color: #156711;
+}
+
+.primary-color {
+	color: $brand-primary;
+}

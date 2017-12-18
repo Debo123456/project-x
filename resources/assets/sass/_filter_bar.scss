@@ -1,0 +1,126 @@
+ /******************************************************
+                Filter Bar
+******************************************************/
+
+
+	.filter-bar{
+		padding: 5px;
+		min-height: 60%;
+		min-width: 15%;
+		border-right: 0.2px solid #ddd;
+		border-top: 0.2px solid #ddd;
+		background-color: #fff;
+		transition: min-width 2s, width 2s, left 2s;
+
+		.icon-container {
+			position: absolute;
+	    right: 0;
+	    top: 0;
+	    padding: 5px;
+	    font-size: x-large;
+	    /* border: 1px solid #000; */
+	    border-radius: 50%;
+	    margin: 20px;
+			transition: all 0.2s;
+			&:hover {
+				color: $brand-danger;
+				transform: rotate(45deg);
+			}
+
+			.ti-close {
+
+			}
+		}
+
+		@include breakpoint(max, $screen-md) {
+			position: fixed;
+			min-height: 100vh;
+			width: 50%;
+			top: 0;
+			bottom: 0;
+	  	left: -50%;
+			z-index: 2;
+			transition: left 1s;
+
+			&.show-filters {
+				left: 0;
+			}
+		}
+		@include breakpoint(max, $screen-sm) {
+			width: 60%;
+	  	left: -60%;
+		}
+
+		@include breakpoint(max, $screen-xs) {
+			width: 80%;
+	  	left: -80%;
+		}
+
+		.filter{
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: column;
+			list-style:none;
+			margin: 0;
+			padding-left: 0;
+
+			li{
+				margin-bottom: 10px;
+			}
+
+			select{
+				min-width: 100%;
+				border-radius: 4px;
+			}
+
+			.filter-item {
+				margin: 5px;
+				border-bottom: 0.2px solid #ddd;
+
+				.price-filter {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					li {
+						cursor: pointer;
+					}
+				}
+			}
+
+			.hidden-filters {
+				opacity:1;
+				max-height: 500px;
+				visibility: visible;
+				transition: max-height 2s;
+				&.hide-filters {
+					max-height: 0;
+					opacity: 0;
+					visibility: hidden;
+				}
+			}
+		}
+
+		.filter-btn-container {
+			@include breakpoint(max, $screen-md) {
+				position: absolute;
+				top: 45%;
+				left: 100%;
+				&:hover {
+					.filter-btn {
+						background: rgba($brand-primary, 1);
+					}
+				}
+			}
+
+			.filter-btn {
+				padding: 20px;
+				border-radius: 0 50% 50% 0;
+				background: rgba($brand-primary, 0.7);
+
+				span {
+					color: #fff;
+				}
+			}
+		}
+	}

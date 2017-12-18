@@ -1,0 +1,129 @@
+/********************************************************
+                Simple Gallery
+********************************************************/
+
+.simplegallery {
+	padding: 15px;
+
+	.gallery-images{
+		height: 200px;
+		margin: auto auto;
+		text-align:center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: #eee;
+		border: 0.2px solid #ddd;
+		border-radius: 2px;
+
+		@include breakpoint(min, $screen-xs) {
+	  	height: 300px;
+	  }
+
+		@include breakpoint(min, $screen-sm) {
+	    height: 350px;
+	  }
+
+		@include breakpoint(min, $screen-md) {
+	    height: 400px;
+	  }
+
+		img {
+			margin: auto auto;
+			height: 100%;
+			max-height: 100%;
+		}
+	}
+
+	.thumbnail {
+		background-color: #fff;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		padding: 4px 0 4px 4px;
+		margin-bottom: 0;
+		background-color: #eee;
+
+		.thumb, .thumb-no-image{
+			background-color: #fff;
+			height: 60px;
+			width: 32.5%;
+			position: relative;
+		  margin: 0 0.8% 5px 0;
+		  cursor: pointer;
+			border-radius: 4px;
+			border: 1px solid #3097D1;
+			@include breakpoint(min, $screen-xs) {
+		  	height: 75px;
+				width: 24.2%;
+		  }
+
+			@include breakpoint(min, $screen-sm) {
+		    height: 85px;
+		  }
+
+			@include breakpoint(min, $screen-md) {
+		    height: 100px;
+				width: 19.2%;
+		  }
+
+			img {
+				max-width: 100%;
+				max-height: 100%;
+				margin-top: auto;
+				border-radius: 4px 4px 0 0;
+			}
+
+			i {
+				height: 100%;
+				width: 100%;
+				color:#aaa;
+			}
+
+			.remove-thumb {
+				background-color: $brand-danger;
+
+				@include breakpoint(min, $screen-md) {
+					font-size: 1.5rem;
+			  }
+			}
+
+			.settings-thumb {
+				background-color: #3097D1;
+			}
+
+			.settings-thumb, .remove-thumb{
+				position: absolute;
+			  top: 4%;
+			  right: 3%;
+
+		    padding: 4.5%;
+		    color: #fff;
+		    font-weight: bold;
+			  cursor: pointer;
+			  opacity: 1;
+			  text-align: center;
+		    line-height: 10px;
+		    border-radius: 50%;
+
+				i {
+					color: #fff;
+				}
+			}
+
+			&:hover {
+				.settings-thumb {
+					opacity: 1;
+				}
+			}
+
+		}
+	}
+
+	.thumb-uploads {
+		border-bottom: 0.2px solid #eee;
+		margin-bottom: 5px;
+	}
+
+
+
+}

@@ -1,0 +1,110 @@
+/******************************************************
+                HEADER & TOP-NAVIGATION
+******************************************************/
+.heading {
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	color: #777;
+}
+.nav-wrapper {
+	z-index: 1;
+	.navbar {
+		width: 100%;
+		opacity:1;
+		margin: 0; /*remove bootstrap margin-bottom*/
+		padding: 20px 0;
+		font-weight: bold;
+		background-color: #666;
+		border-radius: 0;
+		border: none;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+
+		.navbar-nav, .navbar-nav .open .dropdown-menu {
+			>li {
+				>a, >a.dropdown-toggle {
+					font-size: 1.5rem;
+					color: #f5f5f5;
+					padding: 10px 20px;
+					&:hover {
+						color: $brand-primary;
+					}
+				}
+			}
+		}
+
+		&.affix {
+			position: fixed;
+			padding: 10px 0;
+			opacity: 0.9;
+			z-index: 1;
+		  background-color: #333;
+		  box-shadow: 0 0 5px rgba(0,0,0,.8);
+
+			.navbar-brand {
+				font-size: 18px;
+				color: #fff;
+			}
+
+			.navbar-toggle {
+				border:0.2px solid #fff;
+				.icon-bar {
+					border:0.2px solid #fff;
+				}
+			}
+		}
+	}
+}
+
+
+
+.navbar-default .navbar-toggle:focus {
+}
+
+.navbar-default{
+	.navbar-brand {
+		color:#777;
+		font-size: 32px;
+	}
+}
+
+.navbar-toggle {
+	border: 0.2px solid #aaa;
+	.icon-bar {
+		border: 0.2px solid #aaa;
+	}
+}
+
+.navbar-container.fixed-theme {
+    padding: 0;
+}
+
+.navbar-brand.fixed-theme,
+.navbar-container.fixed-theme,
+.navbar.navbar-default.fixed-theme,
+.navbar-toggle.fixed-theme,
+.navbar-toggle.fixed-theme,
+.icon-bar
+.navbar-toggle,
+.navbar-toggle .icon-bar,
+.navbar-brand,
+.navbar-container,
+.navbar.navbar-default{
+    transition: 1s;
+    -webkit-transition:  1s;
+}
+
+.dropdown-menu {
+	color: #fff;
+	background-color: #666;
+}
+
+.dropdown-menu li a {
+	color: #fff;
+}
+
+.dropdown-menu li a:hover {
+	background-color: #999;
+	color: #fff;
+}
