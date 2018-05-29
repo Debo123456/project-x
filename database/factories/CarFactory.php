@@ -58,7 +58,6 @@ $factory->define(App\Car::class, function (Faker\Generator $faker) {
         'transmission' => $transmissions[mt_rand(0,2)],
         'description' => $faker->sentence(6),
         'condition' => $conditions[mt_rand(0,2)],
-        'body_type' => $body_types[mt_rand(0,5)],
-        'seller_id' => md5($faker->name)
+        'body_type' => $body_types[mt_rand(0,5)]
     ];
 });

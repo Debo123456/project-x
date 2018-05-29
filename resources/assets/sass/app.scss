@@ -3,13 +3,13 @@
 // Fonts
 //@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-@import "mixins/responsive";
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
 
 // Variables
 @import "variables";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "mixins/responsive";
 
 // General Stylings
 @import "common";

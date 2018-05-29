@@ -28,7 +28,6 @@ class CreateCarsTable extends Migration
             $table->longText('description');
             $table->string('condition', 25);
             $table->string('body_type', 25)->default('Not specified');
-            $table->string('seller_id');
             $table->timestamps();
         });
     }

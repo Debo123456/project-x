@@ -14,14 +14,14 @@ class ElasticsearchCarsRepository implements CarsRepository
         $this->search = $client;
     }
 
-    public function search(string $query = ""): Collection
+    public function search(string $query = "", $filter = []): Collection
     {
-        $items = $this->searchOnElasticsearch($query);
+        $items = $this->searchOnElasticsearch($query, $filter);
 
         return $this->buildCollection($items);
     }
 
-    private function searchOnElasticsearch(string $query): array
+    private function searchOnElasticsearch(string $query, $filter): array
     {
     	$instance = new Car;
 
@@ -30,14 +30,21 @@ class ElasticsearchCarsRepository implements CarsRepository
             'type' => $instance->getSearchType(),
             'body' => [
                 'query' => [
-                    'multi_match' => [
-                    	'fields' => ['make', 'model'],
-                        'query' => $query,
+                  "bool" => [
+                    "must" => [
+                      "match" => [
+                        "make" => "Ford"
+                      ]
                     ],
-                ],
+                    "should" => [
+                      "match" => [
+                        "model" => "Not specified"
+                      ]
+                    ]
+                  ]
+                ]
             ],
         ]);
-
         return $items;
     }
 
@@ -62,7 +69,6 @@ class ElasticsearchCarsRepository implements CarsRepository
         $sources = array_map(function ($source) {
             // The hydrate method will try to decode this
             // field but ES gives us an array already.
-            $source = json_encode($source);
             return $source;
         }, $hits);
 

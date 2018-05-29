@@ -8,18 +8,9 @@
   <script src="/js/simplegallery.min.js"></script>
 @endsection
 
-@section('search_bar')
-  <div id="search-container">
-    <form action="/search" name="search" method="get" id="main_search">
-      <input type="search" name="q" id="search_bar">
-      <button type="submit" value="Search" id="search_button"><span class="ti-search"></span></button>
-    </form>
-  </div>
-@endsection
-
 @if (!empty($car))
   @section('content')
-    <div id="details_container">
+    <div id="details_container" class="container col-12 col-sm-10 col-md-8">
       <section class="image-section">
         <div id="gallery" class="simplegallery">
 
@@ -65,31 +56,23 @@
           </strong>
         </h4>
 
-        <div id="details_info_container">
-            <ul id="details_info">
+        <div id="details_info_container" class="border d-flex flex-wrap p-3 justify-content-center">
+            <ul id="details_info" class=" d-flex justify-content-center col-12 col-sm-6">
               <ul id="details_info_titles">
                 <li><b>Make:</b>
                 <li><b>Model:</b>
                 <li><b>Year:</b>
                 <li><b>Transmission:</b>
-                <li class="visible-xs"><b>Seller:</b> </li>
-                <li class="visible-xs"><b>Contact:</b> </li>
-                <li class="visible-xs"><b>Location:</b> </li>
-                <li class="visible-xs"><b>Body type:</b> </li>
               </ul>
               <ul id="details_info_description">
                 <li>{{ $car->make }}</li>
                 <li>{{ $car->model }}</li>
                 <li>{{ $car->year }}</li>
                 <li>{{ $car->transmission }}</li>
-                <li class="visible-xs">{{ $car->seller }}</li>
-                <li class="visible-xs">{{ $car->contact }}</li>
-                <li class="visible-xs">{{ $car->location }}</li>
-                <li class="visible-xs">{{ $car->body_type }}</li>
               </ul>
             </ul>
 
-            <ul id="details_info" class="hidden-xs">
+            <ul id="details_info" class=" d-flex justify-content-center col-12 col-sm-6">
               <ul id="details_info_titles">
                 <li><b>Seller:</b> </li>
                 <li><b>Contact:</b> </li>

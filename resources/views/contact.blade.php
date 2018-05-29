@@ -1,8 +1,8 @@
 @extends('templates.default')
 
 @section('content')
-  <div class="form_container">
-    <form class="form col-xs-12 col-sm-8 col-md-5" method="post">
+  <div class="form_container form-contact">
+    <form class="form col-10 col-sm-8 col-md-5 py-3" method="post">
 
       <div class="heading">
         <h3>Contact Us!</h3>
@@ -25,7 +25,7 @@
         <input type="text" class="form-control input-sm" id="name" name="name" value="{{ old('name') }}" placeholder="Name" required="true" autofocus="true">
 
         @if ($errors->has('name'))
-            <span class="help-block">
+            <span class="help-block text-danger">
                 <strong>{{ $errors->first('name') }}</strong>
             </span>
         @endif
@@ -36,7 +36,7 @@
         <input type="email" class="form-control input-sm" id="email" name="email" value="{{ old('email') }}" placeholder="Email">
 
         @if ($errors->has('email'))
-            <span class="help-block">
+            <span class="help-block text-danger">
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
@@ -47,7 +47,7 @@
         <textarea class="form-control input-sm" id="message" rows="3" name="message" value="{{ old('message') }}"></textarea>
 
         @if ($errors->has('message'))
-            <span class="help-block">
+            <span class="help-block text-danger">
                 <strong>{{ $errors->first('message') }}</strong>
             </span>
         @endif

@@ -23,7 +23,7 @@ class HomeController extends Controller
                   ->orWhere('model', 'like', "$query%")->paginate(20, ['*'], 'page', null, ['q' => $query]);
 
       if(count($cars)) {
-          return view('home1')->with('cars', $cars);
+          return view('home')->with('cars', $cars);
       }
       else {
         return redirect()->back()->with('error', 'No vehicle found!!');
@@ -52,21 +52,29 @@ class HomeController extends Controller
         array_push($w_query, ['model', '=',$filters['model']]);
       }
 
-      //assing price
-      if($filters['price-radio'] && $filters['price-radio'] !== 'Any') {
-        $price = $filters['price-radio'];
-        if($price == "500000") {
-          $wpb_query = ['price', [0, $price]];
+      //assign condition
+      if($filters['condition'] && $filters['condition'] !== 'Any') {
+        array_push($w_query, ['condition', '=',$filters['condition']]);
+      }
+
+      //asign price
+      if($filters['price-radio']) {
+        if ($filters['price-radio'] !== 'Any') {
+          $price = $filters['price-radio'];
+          if($price == "500000") {
+            $wpb_query = ['price', [0, $price]];
+          }
+          else if($price == '1000000') {
+            $wpb_query = ['price', [500000, $price]];
+          }
+          else if($price == '5000000') {
+            $wpb_query = ['price', [1000000, $price]];
+          }
+          else if($price == "5000000+") {
+            array_push($w_query, ['price', '>=', '5000000']);
+          }
         }
-        else if($price == '1000000') {
-          $wpb_query = ['price', [500000, $price]];
-        }
-        else if($price == '5000000') {
-          $wpb_query = ['price', [1000000, $price]];
-        }
-        else if($price == "5000000+") {
-          array_push($w_query, ['price', '>=', '5000000']);
-        }
+        
       }
 
       //assign year
@@ -90,11 +98,11 @@ class HomeController extends Controller
 
       if(count($cars->paginate())) {
         $request->session()->flash('error', false);
-          return view('home1')->with('cars', $cars->paginate(20, ['*'], 'page', null, $filters));
+          return view('home')->with('cars', $cars->paginate(20, ['*'], 'page', null, $filters));
       }
       else {
         $request->session()->flash('error', 'No vehicle found');
-        return view('home1')->with('cars', $car->paginate(20));
+        return view('home')->with('cars', $car->paginate(20));
       }
     }
 

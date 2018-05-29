@@ -30,28 +30,22 @@
 
 		img {
 			margin: auto auto;
-			height: 100%;
+			width:100%;
 			max-height: 100%;
 		}
 	}
 
 	.thumbnail {
 		background-color: #fff;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		padding: 4px 0 4px 4px;
-		margin-bottom: 0;
-		background-color: #eee;
 
 		.thumb, .thumb-no-image{
-			background-color: #fff;
+			background-color: #ccc;
 			height: 60px;
 			width: 32.5%;
 			position: relative;
 		  margin: 0 0.8% 5px 0;
 		  cursor: pointer;
 			border-radius: 4px;
-			border: 1px solid #3097D1;
 			@include breakpoint(min, $screen-xs) {
 		  	height: 75px;
 				width: 24.2%;
@@ -67,10 +61,8 @@
 		  }
 
 			img {
-				max-width: 100%;
+				width: 100%;
 				max-height: 100%;
-				margin-top: auto;
-				border-radius: 4px 4px 0 0;
 			}
 
 			i {

@@ -1,29 +1,11 @@
 @extends('templates.default')
 
-@section('css_link')
-  <style media="screen">
-    .nav-wrapper, .nav-wrapper .navbar {
-      background-color: #000;
-    }
-  </style>
-  <link rel="stylesheet" href="/css/themify/themify-icons.css" />
-@endsection
-
 @section('banner')
   <div class="banner">
     <div class="banner-title">
       <h1> AutoSalesJa.com </h1>
       <p>Find the best <span class="primary-color">deals</span> on cars for sale in <span class="primary-color">Jamaica</span.</p>
     </div>
-  </div>
-@endsection
-
-@section('search_bar')
-  <div id="search-container">
-    <form action="/search" class="flex flex-row" name="search" method="get" id="main_search">
-      <input type="search" name="q" id="search_bar">
-      <button type="submit" value="Search" id="search_button"><span class="ti-search"></span></button>
-    </form>
   </div>
 @endsection
 
@@ -37,20 +19,20 @@
 
 @section('filter_bar')
 
-    <div  class="filter-bar col-sm-2">
+    <div  class="filter-bar col-lg-2 p-0 pt-md-5">
 
-      <div class="icon-container close-filter hidden-md hidden-lg">
-        <span class="ti-close"></span>
-      </div>
+      <form class="filter p-1" action="/filter-search" method="get">
 
-      <form class="filter" action="/filter-search" method="post">
+				<div class="icon-container close-filter d-block d-lg-none">
+        	<span class="ti-close"></span>
+      	</div>
 
         <h2 class="text-center primary-color">Filter</h2>
 
         <div class="filter-item">
           <li>
             <strong>Make</strong><br>
-            <select name="make" id="make" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Filter vehicles by manufacturer">
+            <select name="make" id="make" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Filter vehicles by manufacturer">
               <option>Any</option>
               <option>Acura</option>
               <option>Audi</option>
@@ -83,7 +65,7 @@
           </li>
           <li>
             <strong>Model</strong><br>
-            <select name="model" id="model" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Filter vehicles by model.....Choose a make first.">
+            <select name="model" id="model" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Filter vehicles by model.....Choose a make first.">
               <option>Any</option>
             </select>
           </li>
@@ -91,30 +73,44 @@
 
         <div class="filter-item">
           <li>
-
-              <strong>Price:</strong>
-              <div class="radio" data-toggle="tooltip" data-placement="bottom" title="All price range.">
-                <label><input class="price-filters" type="radio" name="price-radio" value="Any" checked="checked">Any</label>
-              </div>
-              <div class="radio" data-toggle="tooltip" data-placement="bottom" title="$500,000 and below.">
-                <label><input class="price-filters" type="radio" name="price-radio" value="500000">$500k and below</label>
-              </div>
-              <div class="radio" data-toggle="tooltip" data-placement="bottom" title="Between $500,000 and $1,000,000.">
-                <label><input class="price-filters " type="radio" name="price-radio" value="1000000">$500k - $1m</label>
-              </div>
-              <div class="radio" data-toggle="tooltip" data-placement="bottom" title="Between $1,000,000 and $5,000,000.">
-                <label><input class="price-filters" type="radio" name="price-radio" value="5000000">$1m - $5m</label>
-              </div>
-              <div class="radio" data-toggle="tooltip" data-placement="bottom" title="$5,000,000 and above..">
-                <label><input class="price-filters" type="radio" name="price-radio" value="5000000+">$5m and above</label>
-              </div>
+            <strong>Price:</strong>
+						<div class="form-check">
+						  <input class="price-filters" type="radio" name="price-radio" id="exampleRadios1" value="Any" checked>
+						  <label class="form-check-label" for="exampleRadios1">
+						    Any
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="price-filters" type="radio" name="price-radio" id="exampleRadios2" value="500000">
+						  <label class="form-check-label" for="exampleRadios2">
+								$500k and below
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="price-filters" type="radio" name="price-radio" id="exampleRadios3" value="1000000">
+						  <label class="form-check-label" for="exampleRadios3">
+								$500k - $1m
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="price-filters" type="radio" name="price-radio" id="exampleRadios4" value="5000000">
+						  <label class="form-check-label" for="exampleRadios4">
+								$1m - $5m
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="price-filters" type="radio" name="price-radio" id="exampleRadios5" value="5000000+">
+						  <label class="form-check-label" for="exampleRadios5">
+								$5m and above
+						  </label>
+						</div>
           </li>
         </div>
 
         <div class="filter-item">
           <li>
             <strong>Min-Year</strong><br>
-            <select name="min_year" id="min_year" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Minimum vehicle year">
+            <select name="min_year" id="min_year" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Minimum vehicle year">
               <option>Any</option>
               <option>1970</option>
               <option>1980</option>
@@ -128,7 +124,7 @@
           </li>
           <li>
             <strong>Max-Year</strong><br>
-            <select name="max_year" id="max_year" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Maximum vehicle year">
+            <select name="max_year" id="max_year" class="form-control form-control-sm" data-toggle="tooltip" data-placement="bottom" title="Maximum vehicle year">
               <option>Any</option>
               <option>1980</option>
               <option>1990</option>
@@ -147,24 +143,24 @@
           <div class="filter-item ">
             <li>
               <strong>Transmission</strong>
-              <div class="radio">
-                <label>
-                  <input class="transmission-filters" type="radio" name="transmission" value="auto">
-                  Automatic
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input class="transmission-filters" type="radio" name="transmission" value="manual">
-                  Manual
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input class="transmission-filters" type="radio" name="transmission" value="tip-tronic">
-                  Tip-tronic
-                </label>
-              </div>
+							<div class="form-check">
+							  <input class="transmission-filters" type="radio" name="transmission" id="auto" value="auto">
+							  <label class="form-check-label" for="auto">
+									Automatic
+							  </label>
+							</div>
+							<div class="form-check">
+							  <input class="transmission-filters" type="radio" name="transmission" id="manual" value="manual">
+							  <label class="form-check-label" for="manual">
+									Manual
+							  </label>
+							</div>
+							<div class="form-check">
+							  <input class="transmission-filters" type="radio" name="transmission" id="tip" value="tip-tronic">
+							  <label class="form-check-label" for="tip">
+									Tip-tronic
+							  </label>
+							</div>
             </li>
           </div>
 
@@ -186,7 +182,13 @@
 
           <div class="filter-item ">
             <li>
-              <strong>Condition</strong>
+							<strong>Condition</strong>
+							<div class="radio">
+                <label>
+                  <input class="condition-filters" type="radio" name="condition" value="Any" checked>
+                  Any
+                </label>
+              </div>
               <div class="radio">
                 <label>
                   <input class="condition-filters" type="radio" name="condition" value="new">
@@ -210,6 +212,8 @@
 
         </div>
 
+        <input type="text" name="filtered" value="1" hidden>
+
         <button type="submit" id="" class="btn btn-primary btn-sm filtered_search">
           Search &nbsp <span class="ti-search" aria-hidden="true"></span>
         </button>
@@ -221,7 +225,7 @@
         {{ csrf_field() }}
       </form>
 
-      <div class="filter-btn-container hidden-md hidden-lg">
+      <div class="filter-btn-container d-block d-lg-none">
         <button type="button" id="" class="btn btn-default btn-sm filter-btn">
           <span class="ti-angle-right" aria-hidden="true"></span>
         </button>
@@ -237,35 +241,35 @@
 
 @section('content')
   @if ($cars)
-    <div id="products" class="list-group list-group-grid">
-
+    <div id="products" class="col-12 col-lg-10 d-flex flex-wrap justify-content-center py-md-5">
       @foreach ($cars as $car)
-        <a href="/view-car/{{ $car->id }}">
-          <div class="home1-item  col-xs-6 col-sm-4 col-md-3 col-lg-2">
+        <a href="/view-car/{{ $car->id }}" class=" my-2 px-2">
+					<div class="home1-item">
             <div class="home1-thumbnail">
 
-              @if (!empty(Storage::files('uploads/vehicles/'. $car->img .'/main')))
-                <div class="img-container" style="background-image:url('{{ Storage::url(Storage::files('uploads/vehicles/'. $car->img .'/main')[0]) }}');">
+              @if (!empty(Storage::files('public/uploads/vehicles/'. $car->img .'/main')))
+                <div class="img-container" style="background-image:url('{{ Storage::url(Storage::files('public/uploads/vehicles/'. $car->img .'/main')[0]) }}');">
                   <!--<img class="group list-group-image" src="" alt="" />-->
                 </div>
               @else
-                <div class="img-container" style="background-image:url('{{ Storage::url('uploads/vehicles/no-image-available.png') }}');">
+                <div class="img-container" style="background-image:url('{{ Storage::url('public/uploads/vehicles/no-image-available.png') }}');">
                   <!--<img class="group list-group-image" src="" alt="" />-->
                 </div>
               @endif
 
                 <ul class="item-info text-center">
                   <li>
-                    <h5 class="item-name list-group-item-heading">      {{ $car->make. ' ' . $car->model }}     </h5>
+                    <h6 class="item-name list-group-item-heading">      {{ $car->make. ' ' . $car->model }}     </h6>
                   </li>
                   <li>{{$car->year}} / {{$car->transmission}}</li>
-                  <li>{{$car->location}}</li>
+									<li>{{$car->location }}</li>
+									<li class="text-info text-uppercase"><strong>{{$car->condition}}</strong></li>
                   <li class="item-price ">
-                      <h4 class="price" >
+                      <h6 class="price" >
                         <strong>
                           ${{number_format((float)$car->price, 0, '.', ',') }}
                         </strong>
-                    </h4>
+                    </h6>
                   </li>
               </ul>
 
@@ -274,8 +278,9 @@
         </a>
       @endforeach
 
-      <div class="col-xs-12 flex flex-center">
-        {{ $cars->links() }}
+			<div class="w-100"></div>
+      <div class="col-12 flex flex-center">
+        {{ $cars->appends(request()->except('_token'))->links() }}
       </div>
 
 

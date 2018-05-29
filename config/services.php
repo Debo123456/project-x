@@ -36,7 +36,9 @@ return [
     ],
     
     'search' => [
-        'enabled' => env('SEARCH_ENABLED', false),
+        //Enable for elasticsearch
+        //'enabled' => env('SEARCH_ENABLED', false),
+        'enabled' => false,
         'hosts' => explode(',', env('SEARCH_HOSTS')),
     ],
 

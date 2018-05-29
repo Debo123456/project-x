@@ -2,11 +2,7 @@
                 Footer
 ******************************************************/
 footer{
-	width: 100%;
-	padding: 10px 0px;
-	border-top: 0.2px solid #ddd;
-	color:#fff;
-	background: #333;
+	background: $brand-primary;
 }
 
 footer p{

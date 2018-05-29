@@ -71,7 +71,6 @@ class UploadController extends Controller
       $car->condition = $request->input('condition');
       $car->body_type = $request->input('body_type');
       $car->description = $request->input('description');
-      $car->seller_id = md5($car->seller . 'hello');
 
 
       //Check if images were uploaded
@@ -79,7 +78,7 @@ class UploadController extends Controller
 
         $images = $request->images; //Get an array of all uploaded images.
 
-        $path = 'uploads/vehicles/';  //store only works with relative path from the storage folder no absolute document root
+        $path = 'public/uploads/vehicles/';  //store only works with relative path from the storage folder no absolute document root
 
         $folder = date('Y/m/'). mt_rand(); //Folder which images will be stored in.
 

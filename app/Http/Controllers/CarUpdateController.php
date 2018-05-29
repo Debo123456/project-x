@@ -130,7 +130,7 @@ class CarUpdateController extends Controller
 
         $cars = new Car;
         $car = $cars->find($id);
-        $folder = $_SERVER['DOCUMENT_ROOT'].Storage::url("uploads/vehicles/".$car->img);//folder for display image
+        $folder = $_SERVER['DOCUMENT_ROOT'].Storage::url("public/uploads/vehicles/".$car->img);//folder for display image
         $display_folder = $folder. "/main";
         $source = $folder ."/".$img;//Path to image that should be moved to main folder
         $destination = $folder ."/main/".$img; //Path for image image in main folder nb. image name included
@@ -139,7 +139,7 @@ class CarUpdateController extends Controller
         if(file_exists($display_folder)) {
           if(count(glob($display_folder ."/*")) !== 0) {   //Check if main folder exists for display image
 
-            $current_display_url_array = explode('/', Storage::allFiles("uploads/vehicles/". $car->img ."/main")[0]);
+            $current_display_url_array = explode('/', Storage::allFiles("public/uploads/vehicles/". $car->img ."/main")[0]);
             $current_display = end($current_display_url_array);
 
             //$current_display = explode('/', Storage::allFiles("uploads/vehicles/". $car->img ."/main")[0])[4];  //get filename of the current display image
@@ -199,7 +199,7 @@ class CarUpdateController extends Controller
 
         $folder = $car->img; //Folder which images will be stored in.
 
-        $path = 'uploads/vehicles/'.$folder; //Storage path for images
+        $path = 'public/uploads/vehicles/'.$folder; //Storage path for images
 
         //Loop through and store each image to storage directory.
         for ($i=0; $i < count($images) ; $i++) {

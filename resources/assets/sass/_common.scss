@@ -7,6 +7,7 @@ body{
 	 padding: 0;
 	 background: #fff;
 	 color: #333;
+	 font-weight: 100;
 }
 
 a {
@@ -21,32 +22,22 @@ body, select, input, p, span, a {
 	margin: 0;
 }
 
+[class^="ti-"], [class*=" ti-"]{
+	line-height: inherit !important;
+}
+
 
 .wrapper{
-	display: flex;
-  flex-direction: column;
-	justify-content: space-between;
-	-webkit-justify-content: space-between;
 	min-height: 100vh;  //This should be deleted once we start generating data from database
-	position:relative;
 	flex: 1 0 auto;
+	.main{
+		flex-grow: 1;
+	}
 }
 
 .wrapper:last-child{
 	margin-top:auto;
 }
-
-.content {
-}
-
-#main {
-	display: flex;
-	flex-direction: column;
-	@include breakpoint(min, $screen-sm) {
-  	flex-direction: row;
-  }
-}
-
 
 .form_container{
 	width: 100%;
@@ -55,32 +46,46 @@ body, select, input, p, span, a {
 	min-height: 80vh;
 	align-items: center;
 	justify-content: center;
-
+	&.form-upload, &.form-auth, &.form-contact{
+		
+	}
+	&.form-upload{
+		background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    	),
+		url('/img/bg/form-bg3.jpeg');
+		//background-position: center;
+		//background-repeat: no-repeat;
+		//background-size: cover;
+	}
+	&.form-auth{
+		background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    	),
+		url('/img/bg/form-bg2.jpeg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	&.form-contact{
+		background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    	),
+		url('/img/bg/form-bg1.jpeg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
 }
 
 .form{
-	padding: 10px 10px;
-	border: 1px solid #aaa;
 	border-radius: 8px;
-	background: #fff;
-}
-
-.form-control {
-	border: 1px solid #aaa;
-}
-
-.hidden{
-	display:none;
-}
-
-.flex-row {
-	display: flex;
-	flex-direction: row;
-}
-
-.flex-column {
-	display: flex;
-	flex-direction: column;
+	background:  linear-gradient(
+		rgba(255, 255, 255, 0.8));
+	box-shadow: 0 15px 20px #212529;
 }
 
 .price {

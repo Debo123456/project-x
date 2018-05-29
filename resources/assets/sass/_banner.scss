@@ -36,11 +36,12 @@
       margin: 0;
       color: white;
       font-size: 2.5rem;
+      font-weight: 100;
       white-space: nowrap;
-      @include breakpoint(min, $screen-xs-min) {
+      @include breakpoint(min, $screen-xs) {
         font-size: 3rem;
       }
-      @include breakpoint(min, $screen-sm-min) {
+      @include breakpoint(min, $screen-sm) {
         font-size: 3.7rem;
       }
 
@@ -52,7 +53,8 @@
       margin: 0;
       color: white;
       font-size: 1.4rem;
-      @include breakpoint(min, $screen-sm-min) {
+      font-weight: 100;
+      @include breakpoint(min, $screen-sm) {
         font-size: 2rem;
       }
     }

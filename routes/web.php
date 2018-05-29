@@ -30,15 +30,8 @@ Auth::routes();
 Route::get('/upload', 'UploadController@showUploadForm')->name('upload')->middleware('auth');
 Route::post('/upload', 'UploadController@upload');
 
-
-Route::get('/search', function (CarsRepository $repository) {
-    $cars = $repository->search((string) request('q'));
-
-    return view('home', [
-    	'cars' => $cars,
-    ]);
-});
-
-Auth::routes();
+Route::get('/search', 'HomeController@search');
+Route::get('/filter-search', 'HomeController@filterSearch');
 
 Route::get('/home', 'HomeController@index')->name('home');
+

@@ -12,9 +12,9 @@ class CarController extends Controller
     //
     public function index($id) {
       $cars = new Car;
-      $car = $cars->find($id);
+      $car = $cars->findOrFail($id);
 
-      $images = Storage::allFiles('uploads/vehicles/'. $car->img);
+      $images = Storage::allFiles('public/uploads/vehicles/'. $car->img);
 
       return view('car', [
         'car' => $car,
@@ -26,7 +26,7 @@ class CarController extends Controller
     public function myCar($user) {
       if ($user == str_replace(" ", "-", Auth::user()->name)) {
         $car = new Car;
-        
+
         $cars = $car->where([
           ['seller', '=', Auth::user()->name]
           //['seller_id', '=', md5(Auth::user()->seller_id)], remove for developement
@@ -39,9 +39,9 @@ class CarController extends Controller
     public function viewMyCar($user, $id) {
       if ($user == str_replace(" ", "-", Auth::user()->name)) {
         $cars = new Car;
-        $car = $cars->find($id);
+        $car = $cars->findOrFail($id);
 
-        $images = Storage::allFiles('uploads/vehicles/'. $car->img);
+        $images = Storage::allFiles('public/uploads/vehicles/'. $car->img);
         return view('mycar', [
           'car' => $car,
           'images' => $images
@@ -51,8 +51,9 @@ class CarController extends Controller
 
     public function deleteCar($user, $id) {
       if ($user == str_replace(" ", "-", Auth::user()->name)) {
-        $cars = new Car;
-        $car = $cars->find($id);
+
+        $cars= new Car;
+        $car = $cars->findOrFail($id);
 
         $directory = 'uploads/vehicles/'. $car->img;
 

@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-  <div class="form_container">
+  <div class="form_container form-upload">
 
-    <form action="" class="form col-xs-12 col-sm-8 col-md-5" method="post" enctype="multipart/form-data">
+    <form action="" class="form col-10 col-sm-8 col-md-5 py-3 my-5" method="post" enctype="multipart/form-data">
 
       <div class="heading">
         <h2>Upload your vehicle</h2>
@@ -72,7 +72,7 @@
       <div class="checkbox" data-toggle="tooltip" data-placement="left" title="Click here to manually enter manufacturer">
         <label>
           <input id="alt-make-checkbox" name="alt-make-checkbox" type="checkbox">
-          <span class="text-warning"><strong>Cant find my vehicles manufacturer!!</strong></span>
+          <span class="text-info"><strong>Cant find my vehicles manufacturer!!</strong></span>
         </label>
       </div><br>
 
@@ -98,7 +98,7 @@
       <div class="checkbox" data-toggle="tooltip" data-placement="left" title="Click here to manually enter a model">
         <label>
           <input id="alt-model-checkbox" type="checkbox" name="alt-model-checkbox">
-          <span class="text-warning"><strong>Cant find my vehicles model!!</strong></span>
+          <span class="text-info"><strong>Cant find my vehicles model!!</strong></span>
         </label>
       </div><br>
 
@@ -270,6 +270,8 @@
     </form>
   </div>
 @endsection
+
+@extends('templates.loading')
 
 @section('scripts')
   <script src="/js/jquery.mask.min.js"></script>
