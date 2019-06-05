@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
           }
 
           return True;
-      });
+      }, 'Please select an option!!');
 
       Validator::extend('phone', function ($attribute, $value, $parameters, $validator) {
           if(preg_match("/((\(\d{3}\) ?))?\d{3}-\d{4}/", $value)== 1) {

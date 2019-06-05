@@ -4,11 +4,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  @yield('og_tags')
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Styles -->
   <link href="/css/app.css" type="text/css" rel="stylesheet"/>
@@ -22,11 +26,15 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  @yield('fb_script')
+
   <div class="d-flex flex-column justify-content-between position-relative wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top px-3">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-1 px-4">
           <a class="navbar-brand text-light" href="{{ url('/') }}">
-            {{ config('app.name', 'AutoSalesJa') }}
+            <!--{{ config('app.name', 'AutoSalesJa') }}-->
+            <img src="http://autosalesja.test/img/logo/autosalesja_logo_white.png"  width="120px" height="50px" />
           </a>
 
 
@@ -48,6 +56,12 @@
                 <a class="nav-link" href="{{ url('/upload') }}">Advertise</a>
               </li>
               <li class="nav-item">
+              <fb:login-button 
+                scope="public_profile,email"
+                onlogin="checkLoginState();">
+              </fb:login-button>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
               </li>
               @if (Auth::guest())
@@ -63,7 +77,7 @@
                 {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/'. str_replace(" ", "-", Auth::user()->name) .'/my-cars') }}">My Cars</a>
+                  <a class="dropdown-item" href="{{ url('/'. str_replace(" ", "-", Auth::user()->name) .'/my-cars') }}">Dashboard</a>
                   <a class="dropdown-item" href="{{ url('/upload') }}">Upload</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ url('/logout') }}" 
@@ -81,7 +95,7 @@
           </div>
         </nav>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
           <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'AutoSalesJa') }}
           </a>
@@ -140,7 +154,7 @@
       @yield('search_bar')
       @yield('flash')
 
-      <div id="main" class="main d-flex">
+      <div id="main" class="main d-flex"  style="background: url('http://autosalesja.test/img/inspiration-geometry.png');">
         @yield('filter_bar')
         @yield('content')
       </div>
@@ -151,6 +165,7 @@
       <p>AutoJa Inc 2016</p>
       <p><a href="#">Terms and Agreements</a> &#8226; <a href="#">Privacy Policy</a></p>
       <p>Copyright &copy; 2016 AutoJa. Inc.</p>
+      <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">test FB</div>
     </footer>
 
   </div>
@@ -181,6 +196,7 @@ var toast = {
   info: function(msg) { this.toastr('alert-info', msg); }
 };
 </script>
+
 @yield('scripts')
 
 </html>

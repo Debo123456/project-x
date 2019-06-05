@@ -22,30 +22,30 @@
 
 @if (!empty($car))
   @section('content')
-
-    <div id="details_container py-5" class="d-flex flex-wrap justify-content-center w-100 bg-white border-top py-5">
+    
+    <div id="details_container py-5" class="d-flex flex-wrap justify-content-center w-100 border-top py-5">
       <section class="image-section col-12 col-md-8">
 
         <div id="gallery" class="simplegallery">
 
-          <div class="gallery-images" >
+          <div class="gallery-images bg-dark" >
             @if ($images)
               @php $has_display = false; @endphp
               @foreach ($images as $key => $image)
 
                 @if (strpos($image, 'main') !== false)
-                  <img id="image_{{ $key }}" class="img-responsive" src="{{ Storage::url($image) }}" alt="...">
-                  {{ $has_display = true }}
+                  <img id="image_{{ $key }}" class="img-fluid" src="{{ Storage::url($image) }}" alt="...">
+                  @php $has_display = true @endphp
                 @else
-                  <img id="image_{{ $key }}" class="img-responsive" src="{{ Storage::url($image) }}" style="display: none;" alt="...">
+                  <img id="image_{{ $key }}" class="img-fluid" src="{{ Storage::url($image) }}" style="display: none;" alt="...">
                 @endif
 
               @endforeach
                 @if (!$has_display)
-                  <img class="img-responsive" src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}" alt="...">
+                  <img class="img-fluid" src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}" alt="...">
                 @endif
             @else
-              <img class="img-responsive" src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}" alt="...">
+              <img class="img-fluid" src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}" alt="...">
             @endif
           </div><br />
 
@@ -58,14 +58,14 @@
                   </span>
 
                   <a class="thumb-link" href="#" rel="{{ $key }}">
-                    <img id="thumb_{{ $key }}" src="{{ Storage::url($image) }}">
+                    <img class="img-fluid" id="thumb_{{ $key }}" src="{{ Storage::url($image) }}">
                   </a>
                 </div>
 
               @endforeach
             @else
               <div class="thumb-no-image">
-                  <img src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}">
+                  <img class="img-fluid" src="{{ Storage::url('uploads/vehicles/no-image-available.png') }}">
               </div>
             @endif
           </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="add-upload-container d-flex">
                   <div class="file-add form-control btn-primary text-center" >
-                    <input type="file" class="file-input" name="images[]" multiple>
+                    <input type="file" class="file-input" name="images[]" accept=".jpg, .jpeg, .png" multiple>
                     Add Images <i class="ti-plus"></i>
                   </div>
                   <button type="submit" class="form-control btn-primary text-center file-upload">
@@ -204,24 +204,41 @@
 //Image upload function
 var uploadInput = function(fileInput) {
   var countFiles = fileInput[0].files.length;
+  var mimeTypes = ['png', 'jpg', 'jpeg'];
+
+  for (var i = 0; i < countFiles; i++) {
+    var path = fileInput[0].files[i].name;
+    var extn = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+
+    if (!mimeTypes.includes(extn)) {
+      toast.error('Only images should be selected');
+      fileInput[0].value = "";
+      break;
+    }
+    if(fileInput[0].files[i].size > 5242880){
+      toast.error( fileInput[0].files[i].name + " is too large("+(fileInput[0].files[i].size/1048576).toFixed(2)+"Mb). Max size = 5Mb");
+      fileInput[0].value = "";
+      break;
+    }
+  }
 
   if(countFiles > (8 - $('.thumb').length)) {
     toast.warning("Warning!, Maximum of 8 images allowed");
-    $(this).val("");
+    fileInput[0].value = "";
+    return;
   }
-  else {
-    var imgPath = fileInput[0].value;
-    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+  else if(fileInput[0].value !== ""){
     var image_holder = $(".thumb-uploads");
     var images =[ ];
+    var imgPath = fileInput[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
 
-    if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+    if (mimeTypes.includes(extn)) {
       if (typeof (FileReader) != "undefined") {
 
         for (var i = 0; i < countFiles; i++) {
-
+          
           var reader = new FileReader();
-
           reader.onload = function(e) {
             image_holder.prepend(
               $("<div />", {"class": "thumb"}).append(
@@ -232,16 +249,14 @@ var uploadInput = function(fileInput) {
               )
             );
           }
-
           reader.readAsDataURL(fileInput[0].files[i]);
-
+          }
         }
-
       } else {
-        alert("File extension not supports");
+        toast.error("File extension not supports");
       }
     } else {
-      alert("Select Only images");
+      toast.error("Select Only images");
     }
   }
 }

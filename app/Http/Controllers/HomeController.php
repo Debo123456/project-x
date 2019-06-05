@@ -10,9 +10,9 @@ class HomeController extends Controller
 {
     public function index() {
       $car = new Car;
-      $cars = $car->paginate(20);
+      $cars = $car->join('views', 'cars.id', '=', 'views.id')->paginate(20);
 
-      return view('home')->with('cars', $cars);
+      return view('home', ['cars'=> $cars]);
     }
 
     public function search(Request $request) {
@@ -55,6 +55,11 @@ class HomeController extends Controller
       //assign condition
       if($filters['condition'] && $filters['condition'] !== 'Any') {
         array_push($w_query, ['condition', '=',$filters['condition']]);
+      }
+
+      //assign transmission
+      if($filters['transmission'] && $filters['transmission'] !== 'Any') {
+        array_push($w_query, ['transmission', '=',$filters['transmission']]);
       }
 
       //asign price

@@ -36,7 +36,6 @@ class UploadController extends Controller
 
       $request->merge(['price' => $price]);
 
-
       $this->validate($request, [
         $make => 'Required|not_default',
         $model => 'Required|not_default',
@@ -84,7 +83,7 @@ class UploadController extends Controller
 
         $path .= $folder; //Storage path for images
 
-        if(mkdir($_SERVER['DOCUMENT_ROOT'].Storage::url($path)."/main", 0700, true)) {
+        if(mkdir($_SERVER['DOCUMENT_ROOT'].Storage::url($path)."/main", 0755, true)) {
           //Loop through and store each image to storage durectory.
           for ($i=0; $i < count($images) ; $i++) {
             if($i == 0) {
@@ -111,9 +110,5 @@ class UploadController extends Controller
       else {
         return redirect()->back()->with('error', 'There was an error while uploading your files ');
       }
-
-
-
-
     }
 }

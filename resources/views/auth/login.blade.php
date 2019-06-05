@@ -32,14 +32,19 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary">
                     Login
                 </button>
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    Forgot Your Password?
-                </a>
+                <span>Not a user?, 
+                    <a class="btn btn-link p-0" href="{{ url('/register') }}">
+                        register here.
+                    </a>
+                </span>
             </div>
+            <a class="btn btn-link" href="{{ route('password.request') }}">
+                Forgot Your Password?
+            </a>
         </form>
     </div>   
 @endsection

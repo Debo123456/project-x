@@ -26,4 +26,9 @@ class Car extends Model
       'condition',
       'body_type'
     ];
+
+    public function view()
+    {
+      return $this->hasOne('App\View', 'id');
+    }
 }

@@ -51,13 +51,9 @@ body, select, input, p, span, a {
 	}
 	&.form-upload{
 		background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    	),
-		url('/img/bg/form-bg3.jpeg');
-		//background-position: center;
-		//background-repeat: no-repeat;
-		//background-size: cover;
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    	);
 	}
 	&.form-auth{
 		background: linear-gradient(
@@ -84,7 +80,8 @@ body, select, input, p, span, a {
 .form{
 	border-radius: 8px;
 	background:  linear-gradient(
-		rgba(255, 255, 255, 0.8));
+		rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.7));
 	box-shadow: 0 15px 20px #212529;
 }
 

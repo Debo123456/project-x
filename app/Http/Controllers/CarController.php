@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,7 @@ class CarController extends Controller
     //
     public function index($id) {
       $cars = new Car;
+
       $car = $cars->findOrFail($id);
 
       $images = Storage::allFiles('public/uploads/vehicles/'. $car->img);

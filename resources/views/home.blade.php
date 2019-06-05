@@ -263,14 +263,17 @@
                   </li>
                   <li>{{$car->year}} / {{$car->transmission}}</li>
 									<li>{{$car->location }}</li>
-									<li class="text-info text-uppercase"><strong>{{$car->condition}}</strong></li>
-                  <li class="item-price ">
-                      <h6 class="price" >
-                        <strong>
-                          ${{number_format((float)$car->price, 0, '.', ',') }}
-                        </strong>
+									<li class="item-price">
+                    <h6 class="price" >
+                      <strong>
+                        ${{number_format((float)$car->price, 0, '.', ',') }}
+                      </strong>
                     </h6>
                   </li>
+									<li class="text-info text-uppercase d-flex justify-content-between text-muted px-2">
+										{{$car->condition}}
+										<span class="ti-eye" aria-hidden="true">&nbsp{{$car->views}}</span>
+									</li>
               </ul>
 
             </div>

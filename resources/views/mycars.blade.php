@@ -13,6 +13,37 @@
 @endsection
 
 @section('content')
+<div class="d-flex flex-column">
+  <div class="container d-flex justify-content-between p-3">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <h1><span class="ti-user border rounded-circle p-3"></span></h1>
+    </div>
+    
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <h3><span class="font-weight-bold">{{Auth::user()->name}}</span></h3>
+      <span>{{Auth::user()->email}}</span>
+    </div>
+  </div>
+  <!-- Secondary Navigation -->
+  <ul class="nav justify-content-center border p-1 bg-light">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-info active">
+        <a class="text-white">
+          <input type="radio" name="options" id="option1" autocomplete="off"><span class="ti-car"></span> <small class="">My Vehicles</small> 
+        </a>
+      </label>
+      <label class="btn btn-info">
+        <a class="text-white" href="">
+          <input type="radio" name="options" id="option2" autocomplete="off"><span class="ti-comment"></span> <small>Messages</small>  
+        </a>
+      </label>
+      <label class="btn btn-info">
+        <a class="text-white" href="#" data-toggle="modal" data-target="#contactModal">
+          <input type="radio" name="options" id="option3" autocomplete="off"><span class="ti-bell"></span> <small>Notifications</small> 
+        </a>
+      </label>
+    </div>
+  </ul>
   @if ($cars)
     <div id="products" class="container col-10 d-flex flex-wrap justify-content-center">
       @foreach ($cars as $key => $car)
@@ -53,31 +84,32 @@
         </div>
       
       
-      <div class="modal fade delete-car-modal-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-warning" id="gridSystemModalLabel">Warning!!</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body text-center">
-              <h3>Delete car?</h3>
-            </div>
-            <div class="modal-footer d-flex justify-content-between p-2">
-              <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Never mind</button>
-              <a href='{{ url('/'. str_replace(" ", "-", Auth::user()->name). "/".'delete-car/'.$car->id) }}' type="button" class="btn btn-danger btn-lg">Delete</a>         
+        <div class="modal fade delete-car-modal-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-warning" id="gridSystemModalLabel">Warning!!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <h3>Delete car?</h3>
+              </div>
+              <div class="modal-footer d-flex justify-content-between p-2">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Never mind</button>
+                <a href='{{ url('/'. str_replace(" ", "-", Auth::user()->name). "/".'delete-car/'.$car->id) }}' type="button" class="btn btn-danger btn-lg">Delete</a>         
+              </div>
             </div>
           </div>
         </div>
+      @endforeach
+      <div class="col-xs-12 flex flex-center">
+        <?php echo $cars->render(); ?>
       </div>
-    @endforeach
-    <div class="col-xs-12 flex flex-center">
-      <?php echo $cars->render(); ?>
     </div>
-</div>
   @endif
+</div>
 @endsection
 
 

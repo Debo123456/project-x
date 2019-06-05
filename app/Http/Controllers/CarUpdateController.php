@@ -171,7 +171,7 @@ class CarUpdateController extends Controller
           }
         }
         else {
-          if(mkdir($folder. "/main", 0700)) {
+          if(mkdir($folder. "/main", 0755)) {
             if(rename($source, $destination)) {
                 return 1.2;
             } else {

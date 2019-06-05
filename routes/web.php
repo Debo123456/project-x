@@ -18,6 +18,7 @@ Route::get('/{user}/my-cars', 'CarController@myCar')->middleware('auth');
 Route::get('/{user}/delete-car/{id}', 'CarController@deleteCar')->middleware('auth');
 Route::get('/{user}/update-car/{id}', 'CarUpdateController@index')->middleware('auth');
 Route::get('/{user}/view-car/{id}', 'CarController@viewMyCar')->middleware('auth');
+
 Route::get('/{user}/delete-image/{id}', 'CarUpdateController@deleteImage')->middleware('auth');
 Route::get('/{user}/set-display-image/{id}', 'CarUpdateController@setDisplayImage')->middleware('auth');
 Route::post('/{user}/update-images/{id}', 'CarUpdateController@updateImages')->middleware('auth');
@@ -34,4 +35,6 @@ Route::get('/search', 'HomeController@search');
 Route::get('/filter-search', 'HomeController@filterSearch');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/update-view', 'ViewController@incrementView');
 
